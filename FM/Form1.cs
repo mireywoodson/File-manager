@@ -16,6 +16,11 @@ namespace FM
         public Form1()
         {
             InitializeComponent();
+            notifyIcon1.Icon = SystemIcons.Asterisk;
+
+            this.ShowInTaskbar = false;
+            notifyIcon1.Click += notifyIcon1_Click;
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,6 +127,23 @@ namespace FM
                 listBox1.Items.Add(dd);
 
             }
+        }
+
+        //трей
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+
+            this.WindowState = FormWindowState.Normal;
+            this.Show();
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            e.Cancel = true;
+            this.Hide();
+
         }
     }
 }
